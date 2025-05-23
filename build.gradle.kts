@@ -8,24 +8,12 @@ plugins {
 
 group = "com.jadin"
 version = "0.0.1-SNAPSHOT"
-
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
+    toolchain { languageVersion.set(JavaLanguageVersion.of(17)) }
 }
 
-configurations {
-    compileOnly {
-        extendsFrom(configurations.annotationProcessor.get())
-    }
-}
+repositories { mavenCentral() }
 
-repositories {
-    mavenCentral()
-}
-
-extra["snippetsDir"] = file("build/generated-snippets")
 extra["vaadinVersion"] = "24.7.4"
 
 dependencies {
@@ -34,6 +22,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.vaadin:vaadin-spring-boot-starter")
+    implementation("com.vaadin:vaadin-charts-flow")               // ← add this
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
@@ -51,13 +40,4 @@ dependencyManagement {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-tasks.test {
-    outputs.dir(project.extra["snippetsDir"]!!)
-}
-
-tasks.asciidoctor {
-    inputs.dir(project.extra["snippetsDir"]!!)
-    dependsOn(tasks.test)
 }

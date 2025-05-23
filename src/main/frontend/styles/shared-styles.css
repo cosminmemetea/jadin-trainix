@@ -1,0 +1,6 @@
+.card {
+    padding: var(--lumo-space-m);
+    background: var(--lumo-base-color);
+    box-shadow: var(--lumo-box-shadow-s);
+    margin: var(--lumo-space-m);
+}
