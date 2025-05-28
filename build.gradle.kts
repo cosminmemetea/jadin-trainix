@@ -22,7 +22,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.vaadin:vaadin-spring-boot-starter")
-    implementation("com.vaadin:vaadin-charts-flow")               // ← add this
+    implementation("com.vaadin:vaadin-charts-flow")
+    implementation("com.theokanning.openai-gpt3-java:service:0.18.2")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
